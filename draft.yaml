@@ -1,0 +1,65 @@
+models:
+  User:
+    first_name: string:100
+    second_name: string:100 nullable
+    first_surname: string:100
+    second_surname: string:100
+    email: string:100 unique
+    password: string:100
+    admin: boolean default:false
+    nivel: integer:10
+    birth_date: date
+    role: string:100
+    create_date: timestamp
+    biography: longtext nullable
+    image: string
+    phone: string:15 nullable
+
+  Attribute:
+    amable: interger
+    problematico: interger
+    puntual: interger
+    inpuntual: interger
+    serio: interger
+    proactivo: interger
+    tranquilo: interger
+    colaborador: interger
+
+  Association:
+    name: string:100
+    image: string
+    email: string unique
+    phone: string:15
+    create_date: timestamp
+    description: longtext
+    nivel: integer:10
+    encargado_id: foreignId index
+
+  Post:
+    texr: longtext
+    image: string nullable
+
+  Event:
+    title: string:100
+    image: string
+    description: longtext nullable
+    state: enum:['Proximamente', 'En proceso', 'Finalizado'] default:'Proximamente'
+    type: enum:['Evento', 'Actividad'] default:'Evento'
+    num_guests: integer
+    max_guests: integer nullable
+    start_hour: time
+    end_hour: time
+    start_date: date
+    end_date: date
+    num_collaborators: integer nullable
+    max_collaborators: integer nullable
+
+  Comment:
+    starts: integer
+    image: string nullable
+    text: longtext nullable
+    user: foreignId index
+    event_id: foreignId index
+
+controllers:
+  # ...
