@@ -1,5 +1,5 @@
 models:
-  User:
+  Usuario:
     first_name: string:100
     second_name: string:100 nullable
     first_surname: string:100
@@ -43,8 +43,8 @@ models:
     title: string:100
     image: string
     description: longtext nullable
-    state: enum:['Proximamente', 'En proceso', 'Finalizado'] default:'Proximamente'
-    type: enum:['Evento', 'Actividad'] default:'Evento'
+    state: enum:Proximamente,Realizandose,Finalizado default:'Proximamente'
+    type: enum:Evento,Actividad default:'Evento'
     num_guests: integer
     max_guests: integer nullable
     start_hour: time
