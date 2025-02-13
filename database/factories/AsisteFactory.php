@@ -25,6 +25,7 @@ class AsisteFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'event_id' => Event::inRandomOrder()->first()->id,
+            'asistio' => $this->faker->boolean(),
         ];
     }
 }

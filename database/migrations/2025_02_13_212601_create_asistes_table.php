@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->index();
             $table->foreignId('event_id')->index();
+            $table->boolean('asistio')->default(false);
             $table->timestamps();
         });
     }
