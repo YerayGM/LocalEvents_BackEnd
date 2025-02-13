@@ -26,7 +26,7 @@ return new class extends Migration
             $table->date('birth_date');
             $table->longText('biography')->nullable();
             $table->string('image');
-            $table->unsignedTinyInteger('phone_number')->unique()->nullable();
+            $table->string('phone_number')->unique();
             $table->timestamps();
         });
 

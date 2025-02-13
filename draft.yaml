@@ -14,7 +14,7 @@ models:
     name: string:100
     image: string
     email: string:320 unique
-    phone_number: tinyInteger:15 unique unsigned
+    phone_number: string unique
     create_date: timestamp on_update:CURRENT_TIMESTAMP
     description: mediumText
     level: tinyInteger:10 default:1 unsigned
