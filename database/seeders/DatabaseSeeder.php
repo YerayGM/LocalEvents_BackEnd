@@ -16,9 +16,10 @@ class DatabaseSeeder extends Seeder
             AttributeSeeder::class,
             AssociationSeeder::class,
             PostSeeder::class,
+            InscribeSeeder::class,
+            EventSeeder::class,
             CommentSeeder::class,
             AsisteSeeder::class,
-            InscribeSeeder::class,
         ]);
     }
 }
