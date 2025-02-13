@@ -1,65 +1,65 @@
 models:
   Usuario:
-    first_name: string:100
-    second_name: string:100 nullable
-    first_surname: string:100
-    second_surname: string:100
-    email: string:100 unique
-    password: string:100
+    first_name: string:60
+    second_name: string:60 nullable
+    first_surname: string:40
+    second_surname: string:40
+    email: string:320 unique
+    password: string:30
     admin: boolean default:false
-    nivel: integer:10
+    level: tinyInteger:10 default:1 unsigned
     birth_date: date
-    role: string:100
-    create_date: timestamp
-    biography: longtext nullable
+    biography: longText nullable
     image: string
-    phone: string:15 nullable
+    phone_number: tinyInteger:15 unique nullable unsigned
 
   Attribute:
-    amable: interger
-    problematico: interger
-    puntual: interger
-    inpuntual: interger
-    serio: interger
-    proactivo: interger
-    tranquilo: interger
-    colaborador: interger
+    amable: integer
+    problematico: integer
+    puntual: integer
+    impuntual: integer
+    serio: integer
+    proactivo: integer
+    tranquilo: integer
+    colaborador: integer
+    usuario_id: foreignId index on_delete:cascade on_update:cascade
 
   Association:
     name: string:100
     image: string
-    email: string unique
-    phone: string:15
-    create_date: timestamp
-    description: longtext
-    nivel: integer:10
-    encargado_id: foreignId index
+    email: string:320 unique
+    phone_number: tinyInteger:15 unique unsigned
+    create_date: timestamp on_update:CURRENT_TIMESTAMP
+    description: mediumText
+    level: tinyInteger:10 default:1 unsigned
+    id_responsible: foreignId index on_delete:set null on_update:cascade
 
   Post:
-    texr: longtext
+    text: text
     image: string nullable
+    association_id: foreignId index on_delete:cascade on_update:cascade
 
   Event:
     title: string:100
     image: string
-    description: longtext nullable
+    description: tinyText nullable
     state: enum:Proximamente,Realizandose,Finalizado default:'Proximamente'
     type: enum:Evento,Actividad default:'Evento'
-    num_guests: integer
-    max_guests: integer nullable
+    num_guests: integer unsigned
+    max_guests: integer unsigned nullable
     start_hour: time
     end_hour: time
     start_date: date
     end_date: date
-    num_collaborators: integer nullable
-    max_collaborators: integer nullable
+    num_collaborators: integer unsigned nullable
+    max_collaborators: integer unsigned nullable
 
   Comment:
-    starts: integer
+    starts: tinyInteger:5 unsigned
     image: string nullable
     text: longtext nullable
-    user: foreignId index
-    event_id: foreignId index
+    usuario_id: foreignId index on_delete:cascade on_update:cascade
+    event_id: foreignId index on_delete:cascade on_update:cascade
+    association_id: foreignId index on_delete:cascade on_update:cascade
 
-controllers:
-  # ...
+seeders: Usuario, Attribute, Association, Post, Event, Comment
