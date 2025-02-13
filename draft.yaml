@@ -1,28 +1,14 @@
 models:
-  Usuario:
-    first_name: string:60
-    second_name: string:60 nullable
-    first_surname: string:40
-    second_surname: string:40
-    email: string:320 unique
-    password: string:30
-    admin: boolean default:false
-    level: tinyInteger:10 default:1 unsigned
-    birth_date: date
-    biography: longText nullable
-    image: string
-    phone_number: tinyInteger:15 unique nullable unsigned
-
   Attribute:
-    amable: integer
-    problematico: integer
-    puntual: integer
-    impuntual: integer
-    serio: integer
-    proactivo: integer
-    tranquilo: integer
-    colaborador: integer
-    usuario_id: foreignId index on_delete:cascade on_update:cascade
+    amable: integer unsigned
+    problematico: integer unsigned
+    puntual: integer unsigned
+    impuntual: integer unsigned
+    serio: integer unsigned
+    proactivo: integer unsigned
+    tranquilo: integer unsigned
+    colaborador: integer unsigned
+    user_id: foreignId index on_delete:cascade on_update:cascade
 
   Association:
     name: string:100
@@ -58,8 +44,8 @@ models:
     starts: tinyInteger:5 unsigned
     image: string nullable
     text: longtext nullable
-    usuario_id: foreignId index on_delete:cascade on_update:cascade
+    user_id: foreignId index on_delete:cascade on_update:cascade
     event_id: foreignId index on_delete:cascade on_update:cascade
     association_id: foreignId index on_delete:cascade on_update:cascade
 
-seeders: Usuario, Attribute, Association, Post, Event, Comment
+seeders: Attribute, Association, Post, Event, Comment
