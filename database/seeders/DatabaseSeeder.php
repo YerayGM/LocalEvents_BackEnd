@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             AssociationSeeder::class,
             PostSeeder::class,
             CommentSeeder::class,
+            AsisteSeeder::class,
+            InscribeSeeder::class,
         ]);
     }
 }
