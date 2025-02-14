@@ -51,4 +51,10 @@ class Association extends Model
     {
         return $this->hasMany(Inscribe::class);
     }
+
+    public function comments()
+    {
+        return $this->hasManyThrough(Comment::class, Event::class);
+    }
+
 }
