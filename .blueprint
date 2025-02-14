@@ -1,2 +1,38 @@
+created:
+    - database/factories/AttributeFactory.php
+    - database/factories/AssociationFactory.php
+    - database/factories/InscribeFactory.php
+    - database/factories/PostFactory.php
+    - database/factories/EventFactory.php
+    - database/factories/CommentFactory.php
+    - database/factories/AsisteFactory.php
+    - database/migrations/2025_02_13_212555_create_attributes_table.php
+    - database/migrations/2025_02_13_212556_create_associations_table.php
+    - database/migrations/2025_02_13_212557_create_inscribes_table.php
+    - database/migrations/2025_02_13_212558_create_posts_table.php
+    - database/migrations/2025_02_13_212559_create_events_table.php
+    - database/migrations/2025_02_13_212600_create_comments_table.php
+    - database/migrations/2025_02_13_212601_create_asistes_table.php
+    - app/Models/Attribute.php
+    - app/Models/Association.php
+    - app/Models/Inscribe.php
+    - app/Models/Post.php
+    - app/Models/Event.php
+    - app/Models/Comment.php
+    - app/Models/Asiste.php
+    - database/seeders/AttributeSeeder.php
+    - database/seeders/AssociationSeeder.php
+    - database/seeders/PostSeeder.php
+    - database/seeders/EventSeeder.php
+    - database/seeders/CommentSeeder.php
+    - database/seeders/AsisteSeeder.php
+    - database/seeders/InscribeSeeder.php
 models:
     User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    Attribute: { amable: 'integer unsigned', problematico: 'integer unsigned', puntual: 'integer unsigned', impuntual: 'integer unsigned', serio: 'integer unsigned', proactivo: 'integer unsigned', tranquilo: 'integer unsigned', colaborador: 'integer unsigned', user_id: 'foreignId index on_delete:cascade on_update:cascade', relationships: { belongsTo: User } }
+    Association: { name: 'string:100', image: string, email: 'string:320 unique', phone_number: 'string unique', create_date: 'timestamp on_update:CURRENT_TIMESTAMP', description: mediumText, level: 'tinyInteger:10 default:1 unsigned', id_responsible: 'foreignId index on_delete:set null on_update:cascade', relationships: { hasMany: 'Post, Event, Inscribe' } }
+    Inscribe: { user_id: 'foreignId index on_delete:cascade on_update:cascade', event_id: 'foreignId index on_delete:cascade on_update:cascade', association_id: 'foreignId index on_delete:cascade on_update:cascade', relationships: { belongsTo: 'User,Association' } }
+    Post: { text: text, image: 'string nullable', association_id: 'foreignId index on_delete:cascade on_update:cascade', relationships: { belongsTo: Association } }
+    Event: { title: 'string:100', image: string, description: 'tinyText nullable', state: "enum:Proximamente,Realizandose,Finalizado default:'Proximamente'", type: "enum:Evento,Actividad default:'Evento'", num_guests: 'integer unsigned', max_guests: 'integer unsigned nullable', start_hour: time, end_hour: time, start_date: date, end_date: date, num_collaborators: 'integer unsigned nullable', max_collaborators: 'integer unsigned nullable', relationships: { belongsTo: Association, hasMany: Comment } }
+    Comment: { starts: 'tinyInteger:5 unsigned', image: 'string nullable', text: 'longtext nullable', user_id: 'foreignId index on_delete:cascade on_update:cascade', event_id: 'foreignId index on_delete:cascade on_update:cascade', association_id: 'foreignId index on_delete:cascade on_update:cascade', relationships: { belongsTo: 'User,Event' } }
+    Asiste: { user_id: 'foreignId index on_delete:cascade on_update:cascade', event_id: 'foreignId index on_delete:cascade on_update:cascade', relationships: { belongsTo: 'User,Event' } }

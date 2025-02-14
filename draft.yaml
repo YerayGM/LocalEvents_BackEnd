@@ -9,6 +9,8 @@ models:
     tranquilo: integer unsigned
     colaborador: integer unsigned
     user_id: foreignId index on_delete:cascade on_update:cascade
+    relationships:
+      belongsTo: User
 
   Association:
     name: string:100
@@ -19,11 +21,22 @@ models:
     description: mediumText
     level: tinyInteger:10 default:1 unsigned
     id_responsible: foreignId index on_delete:set null on_update:cascade
+    relationships:
+      hasMany: Post, Event, Inscribe
+
+  Inscribe:
+    user_id: foreignId index on_delete:cascade on_update:cascade
+    event_id: foreignId index on_delete:cascade on_update:cascade
+    association_id: foreignId index on_delete:cascade on_update:cascade
+    relationships:
+      belongsTo: User,Association
 
   Post:
     text: text
     image: string nullable
     association_id: foreignId index on_delete:cascade on_update:cascade
+    relationships:
+      belongsTo: Association
 
   Event:
     title: string:100
@@ -39,6 +52,9 @@ models:
     end_date: date
     num_collaborators: integer unsigned nullable
     max_collaborators: integer unsigned nullable
+    relationships:
+      belongsTo: Association
+      hasMany: Comment
 
   Comment:
     starts: tinyInteger:5 unsigned
@@ -47,5 +63,13 @@ models:
     user_id: foreignId index on_delete:cascade on_update:cascade
     event_id: foreignId index on_delete:cascade on_update:cascade
     association_id: foreignId index on_delete:cascade on_update:cascade
+    relationships:
+      belongsTo: User,Event
 
-seeders: Attribute, Association, Post, Event, Comment
+  Asiste:
+    user_id: foreignId index on_delete:cascade on_update:cascade
+    event_id: foreignId index on_delete:cascade on_update:cascade
+    relationships:
+      belongsTo: User,Event
+
+seeders: Attribute, Association, Post, Event, Comment, Asiste, Inscribe
