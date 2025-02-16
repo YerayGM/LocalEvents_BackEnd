@@ -16,6 +16,9 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: List SSH Keys
+        run: ssh-add -l
+
       - name: Add SSH Key to Known Hosts
         run: |
           mkdir -p ~/.ssh
@@ -23,11 +26,11 @@ jobs:
 
       - name: Deploy
         run: |
-          ssh fana5143@yeray.informaticamajada.es -p 2222 << 'EOF'
+          ssh -tt fana5143@yeray.informaticamajada.es -p 2222 << 'EOF'
             cd /var/www/html/LocalEvents_BackEnd
             git pull origin master
             composer install --no-dev --optimize-autoloader
-            php artisan migrate --force
+            php artisan migrate:fresh --seed
             php artisan optimize:clear
             sudo service php8.3-fpm reload
           EOF
