@@ -19,11 +19,11 @@ jobs:
       - name: Add SSH Key to Known Hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -p 2222 200.234.231.250 >> ~/.ssh/known_hosts
+          ssh-keyscan -p 2222 yeray.informaticamajada.es >> ~/.ssh/known_hosts
 
       - name: Deploy
         run: |
-          ssh fana5143@200.234.231.250 -p 2222 << 'EOF'
+          ssh fana5143@yeray.informaticamajada.es -p 2222 << 'EOF'
             cd /var/www/html/LocalEvents_BackEnd
             git pull origin master
             composer install --no-dev --optimize-autoloader
@@ -31,5 +31,3 @@ jobs:
             php artisan optimize:clear
             sudo service php8.3-fpm reload
           EOF
-
-
