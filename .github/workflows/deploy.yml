@@ -25,9 +25,9 @@ jobs:
         run: |
           ssh fana5143@yeray.informaticamajada.es -p 2222 << 'EOF'
             cd /var/www/html/LocalEvents_BackEnd
-            git pull origin master
+            git pull origin development
             composer install --no-dev --optimize-autoloader
-            php artisan migrate --force
+            php artisan migrate:fresh --seed
             php artisan optimize:clear
             sudo service php8.3-fpm reload
           EOF
