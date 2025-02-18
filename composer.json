@@ -16,7 +16,7 @@
         "tailflow/laravel-orion": "*"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.23",
+        "fakerphp/faker": "^1.24",
         "ibex/crud-generator": "^2.1",
         "laravel-shift/blueprint": "^2.11",
         "laravel/breeze": "^2.3",
