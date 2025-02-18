@@ -11,10 +11,18 @@ use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\AsisteController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Orion::resource('events', EventController::class);
 });
+
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->middleware('auth:sanctum');
+
 
 Route::group(['as' => 'api.'], function() {
     Orion::resource('users', UserController::class);
