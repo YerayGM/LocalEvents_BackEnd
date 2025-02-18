@@ -27,7 +27,7 @@ jobs:
             cd /var/www/html/LocalEvents_BackEnd
             git pull origin development
             composer install --no-dev --optimize-autoloader
-            php artisan migrate:fresh --seed
+            php artisan migrate:fresh
             php artisan optimize:clear
             sudo service php8.3-fpm reload
           EOF
