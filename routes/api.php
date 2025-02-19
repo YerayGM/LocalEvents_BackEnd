@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Orion::resource('events', EventController::class);
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 });
 
 // Faltan posibles rutas:
@@ -36,5 +37,3 @@ Route::group(['as' => 'api.'], function() {
 });
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->middleware('auth:sanctum');
