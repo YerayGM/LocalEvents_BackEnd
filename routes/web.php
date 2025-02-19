@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('https://local-events-front-green.vercel.app/');
 });
 
 Route::get('/dashboard', function () {
