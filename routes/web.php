@@ -4,11 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect('https://local-events-front-green.vercel.app/');
+    return view('auth/login');
 });
 
 Route::get('/dashboard', function () {
-    return redirect('https://local-events-front-green.vercel.app/');
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

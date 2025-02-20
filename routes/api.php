@@ -19,7 +19,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 // Faltan posibles rutas:
-Route::group(['as' => 'api.'], function() {
+Route::group(['as' => 'api.'], function () {
     Orion::resource('users', UserController::class);
     Orion::resource('attributes', AttributeController::class);
     Orion::resource('associations', AssociationController::class);
