@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Association;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class AssociationPolicy
+class PostPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class AssociationPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Association $association): bool
+    public function view(User $user, Post $post): bool
     {
         return true;
     }
@@ -35,7 +35,7 @@ class AssociationPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Association $association): bool
+    public function update(User $user, Post $post): bool
     {
         return true;
     }
@@ -43,16 +43,15 @@ class AssociationPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Association $association): bool
+    public function delete(User $user, Post $post): bool
     {
-        return $user->admin;
+        return true;
     }
-    
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Association $association): bool
+    public function restore(User $user, Post $post): bool
     {
         return false;
     }
@@ -60,7 +59,7 @@ class AssociationPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Association $association): bool
+    public function forceDelete(User $user, Post $post): bool
     {
         return false;
     }
