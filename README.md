@@ -17,6 +17,8 @@ Este es el backend del proyecto de gestión de eventos, desarrollado con **Larav
 - **Base de datos en Laravel:** Toda la lógica de datos reside en Laravel.
 - **Carga de imágenes en registro:** Opcional para los usuarios.
 - **Estructura visual coherente con React:** Para una transición fluida entre frontend y backend.
+- **Uso de Orion y Sanctum:** Para la gestión de API y autenticación segura.
+- **Generación de CRUD:** Utilizando [Laravel CRUD Generator](https://github.com/awais-vteams/laravel-crud-generator) para agilizar el desarrollo.
 
 ## Tecnologías Utilizadas
 
@@ -25,6 +27,9 @@ Este es el backend del proyecto de gestión de eventos, desarrollado con **Larav
 - **Blade** - Motor de plantillas de Laravel.
 - **Tailwind CSS** - Estilización del frontend de Laravel.
 - **Alpine.js** - Para la interactividad en la UI del backend.
+- **Sanctum** - Autenticación basada en tokens.
+- **Orion** - Creación de APIs basada en JSON:API.
+- **Laravel CRUD Generator** - Generación de CRUD automática.
 
 ## Instalación
 
@@ -62,6 +67,7 @@ Este es el backend del proyecto de gestión de eventos, desarrollado con **Larav
 
 ## Endpoints Importantes
 
+### Autenticación y Usuarios
 | Método | Ruta                | Descripción |
 |--------|---------------------|-------------|
 | POST   | `/register`         | Registro de usuario |
@@ -69,10 +75,45 @@ Este es el backend del proyecto de gestión de eventos, desarrollado con **Larav
 | GET    | `/users`            | Listar usuarios (solo admin) |
 | POST   | `/logout`           | Cerrar sesión |
 
+### Eventos
+| Método | Ruta                | Descripción |
+|--------|---------------------|-------------|
+| GET    | `/events`           | Listar eventos |
+| POST   | `/events`           | Crear evento (requiere autenticación) |
+| GET    | `/events/{id}`      | Obtener detalles de un evento |
+| PUT    | `/events/{id}`      | Actualizar un evento (requiere autenticación) |
+| DELETE | `/events/{id}`      | Eliminar un evento (requiere permisos de admin) |
+
+### Asociaciones
+| Método | Ruta                | Descripción |
+|--------|---------------------|-------------|
+| GET    | `/associations`     | Listar asociaciones |
+| POST   | `/associations`     | Crear asociación |
+| GET    | `/associations/{id}` | Obtener detalles de una asociación |
+| PUT    | `/associations/{id}` | Actualizar una asociación |
+| DELETE | `/associations/{id}` | Eliminar una asociación |
+
+### Suscripciones
+| Método | Ruta                | Descripción |
+|--------|---------------------|-------------|
+| GET    | `/subscriptions`    | Listar suscripciones del usuario |
+| POST   | `/subscriptions`    | Suscribirse a una asociación |
+| DELETE | `/subscriptions/{id}` | Cancelar suscripción |
+
+### Recursos y Políticas
+| Método | Ruta                | Descripción |
+|--------|---------------------|-------------|
+| GET    | `/about`            | Información sobre la plataforma |
+| GET    | `/rules`            | Reglas de la comunidad |
+| GET    | `/privacy`          | Políticas de privacidad |
+
 ## Consideraciones
 
 - La autenticación y gestión de usuarios están completamente en Laravel, por lo que React redirige al dominio del backend para estas funciones.
 - El backend mantiene la estética de React para una experiencia uniforme.
+- Se usó **Orion** para facilitar la creación de APIs siguiendo el estándar JSON:API.
+- Se usó **Sanctum** para autenticación basada en tokens.
+- Se usó **Laravel CRUD Generator** para acelerar el desarrollo de funcionalidades CRUD.
 
 ## Contribuciones
 
