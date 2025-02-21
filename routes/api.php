@@ -18,7 +18,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 });
 
-// Faltan posibles rutas:
+// Añadir posibles rutas:
 Route::group(['as' => 'api.'], function () {
     Orion::resource('users', UserController::class);
     Orion::resource('attributes', AttributeController::class);
