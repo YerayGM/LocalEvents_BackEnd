@@ -9,6 +9,10 @@
                     <x-nav-link :href="route('dashboard')">
                         {{ __('Volver') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('users.index')">
+                        {{ __('Administrar Usuarios') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -36,6 +40,7 @@
                             </x-dropdown-link>
                         </form>
                     </x-slot>
+
                 </x-dropdown>
             </div>
 
@@ -57,11 +62,8 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')">
-                {{ __('Eventos') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')">
-                {{ __('Asociaciones') }}
+            <x-responsive-nav-link :href="route('users.index')">
+                {{ __('Administrar Usuarios') }}
             </x-responsive-nav-link>
         </div>
 

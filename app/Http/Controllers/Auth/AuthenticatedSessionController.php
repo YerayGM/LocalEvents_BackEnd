@@ -14,10 +14,15 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create(Request $request): View
     {
+        Auth::logout(); // Cierra cualquier sesión activa
+        $request->session()->invalidate(); // Invalida la sesión
+        $request->session()->regenerateToken(); // Regenera el token CSRF
+    
         return view('auth.login');
     }
+    
 
     /**
      * Handle an incoming authentication request.
@@ -38,14 +43,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $request->user()->tokens()->delete();
-
-        Auth::guard('web')->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return response()->noContent();
+        Auth::logout(); // Cierra la sesión
+    
+        $request->session()->invalidate(); // Invalida la sesión actual
+        $request->session()->regenerateToken(); // Regenera el token CSRF
+    
+        return redirect()->route('login'); // Redirige al login
     }
 }
