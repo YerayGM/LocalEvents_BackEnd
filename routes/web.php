@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Laravel\Socialite\Facades\Socialite;
-
 use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Container\Attributes\Auth;
@@ -14,6 +14,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return redirect('https://rafael.informaticamajada.es');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource('users', UserController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
