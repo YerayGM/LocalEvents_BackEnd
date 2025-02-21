@@ -9,7 +9,7 @@ on:
 jobs:
   deploy:
     name: Despliegue en el vps
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Despliegue
         uses: appleboy/ssh-action@v0.1.8
