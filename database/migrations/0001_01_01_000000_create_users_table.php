@@ -15,19 +15,22 @@ return new class extends Migration
             $table->id();
             $table->string('name', 60);
             $table->string('second_name', 60)->nullable();
-            $table->string('first_surname', 40);
-            $table->string('second_surname', 40);
+            $table->string('first_surname', 40)->default('None');
+            $table->string('second_surname', 40)->default('None');
             $table->string('email', 320)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->boolean('admin')->default(false);
             $table->unsignedTinyInteger('level')->default(1);
-            $table->date('birth_date');
+            $table->date('birth_date')->nullable();
             $table->longText('biography')->nullable();
             $table->string('image')->nullable();
-            $table->string('phone_number')->unique();
+            $table->string('phone_number')->unique()->nullable();
             $table->timestamps();
+            $table->string('github_id')->nullable();
+            $table->string('github_token')->nullable();
+            $table->string('github_refresh_token')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
