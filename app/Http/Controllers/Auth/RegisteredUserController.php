@@ -38,11 +38,12 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'birth_date' => ['required', 'date'],
             'biography' => ['nullable', 'string'],
-            'image' => ['nullable', 'image'],
+            'image' => ['nullable','file','image','max:200'], 
             'phone_number' => ['required', 'string', 'max:15', 'unique:' . User::class],
         ]);
 
-        $user = User::create([
+        // Datos del usuario
+        $userData = [
             'name' => $request->name,
             'second_name' => $request->second_name,
             'first_surname' => $request->first_surname,
@@ -52,7 +53,16 @@ class RegisteredUserController extends Controller
             'birth_date' => $request->birth_date,
             'biography' => $request->biography,
             'phone_number' => $request->phone_number,
-        ]);
+        ];
+
+        // Manejo de la imagen
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('profile-images', 'public'); 
+            $userData['image'] = $path;
+        }
+
+        // Crear el usuario
+        $user = User::create($userData);
 
         event(new Registered($user));
 

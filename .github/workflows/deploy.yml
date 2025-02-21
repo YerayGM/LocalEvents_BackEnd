@@ -1,34 +1,30 @@
-name: Deploy to VPS
+name: Despliegue del back-end
 
 on:
   push:
     branches:
       - development
+  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
+    name: Despliegue en el vps
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: Start SSH Agent
-        uses: webfactory/ssh-agent@v0.5.3
+      - name: Despliegue
+        uses: appleboy/ssh-action@v0.1.8
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Add SSH Key to Known Hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -p 2222 200.234.231.250 >> ~/.ssh/known_hosts
-
-      - name: Deploy
-        run: |
-          ssh fana5143@200.234.231.250 -p 2222 << 'EOF'
-            cd /var/www/html/LocalEvents_BackEnd
-            git pull origin development
-            composer install --no-dev --optimize-autoloader
-            php artisan optimize:clear
-            npm install
-            npm run build
-            sudo service php8.3-fpm reload
-          EOF
+          host: yeray.informaticamajada.es
+          port: 2222
+          username: fana5143
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: "
+            cd /var/www/html/LocalEvents_BackEnd;
+            git stash;
+            git pull origin development;
+            composer install --no-dev --optimize-autoloader;
+            php artisan optimize:clear;
+            npm install;
+            npm run build;
+            sudo service php8.3-fpm reload;
+          "

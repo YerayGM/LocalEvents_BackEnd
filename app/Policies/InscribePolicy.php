@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Association;
+use App\Models\Inscribe;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class AssociationPolicy
+class InscribePolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class AssociationPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Association $association): bool
+    public function view(User $user, Inscribe $inscribe): bool
     {
         return true;
     }
@@ -29,30 +29,29 @@ class AssociationPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Association $association): bool
+    public function update(User $user, Inscribe $inscribe): bool
     {
-        return true;
+        return false;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Association $association): bool
+    public function delete(User $user, Inscribe $inscribe): bool
     {
-        return $user->admin;
+        return false;
     }
-    
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Association $association): bool
+    public function restore(User $user, Inscribe $inscribe): bool
     {
         return false;
     }
@@ -60,7 +59,7 @@ class AssociationPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Association $association): bool
+    public function forceDelete(User $user, Inscribe $inscribe): bool
     {
         return false;
     }
