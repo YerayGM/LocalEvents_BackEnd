@@ -1,8 +1,5 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Actualizar Contraseña') }}
-        </h2>
 
         <p class="mt-1 text-sm text-gray-600">
             {{ __('Asegúrate de utilizar una contraseña larga y segura para proteger tu cuenta.') }}

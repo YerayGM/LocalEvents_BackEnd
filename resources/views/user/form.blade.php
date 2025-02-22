@@ -55,22 +55,6 @@
         <x-text-input id="phone_number" name="phone_number" type="text" class="mt-1 block w-full" :value="old('phone_number', $user?->phone_number)" autocomplete="phone_number" placeholder="Phone Number"/>
         <x-input-error class="mt-2" :messages="$errors->get('phone_number')"/>
     </div>
-    <div>
-        <x-input-label for="github_id" :value="__('Github Id')"/>
-        <x-text-input id="github_id" name="github_id" type="text" class="mt-1 block w-full" :value="old('github_id', $user?->github_id)" autocomplete="github_id" placeholder="Github Id"/>
-        <x-input-error class="mt-2" :messages="$errors->get('github_id')"/>
-    </div>
-    <div>
-        <x-input-label for="github_token" :value="__('Github Token')"/>
-        <x-text-input id="github_token" name="github_token" type="text" class="mt-1 block w-full" :value="old('github_token', $user?->github_token)" autocomplete="github_token" placeholder="Github Token"/>
-        <x-input-error class="mt-2" :messages="$errors->get('github_token')"/>
-    </div>
-    <div>
-        <x-input-label for="github_refresh_token" :value="__('Github Refresh Token')"/>
-        <x-text-input id="github_refresh_token" name="github_refresh_token" type="text" class="mt-1 block w-full" :value="old('github_refresh_token', $user?->github_refresh_token)" autocomplete="github_refresh_token" placeholder="Github Refresh Token"/>
-        <x-input-error class="mt-2" :messages="$errors->get('github_refresh_token')"/>
-    </div>
-
     <div class="flex items-center gap-4">
         <x-primary-button>Submit</x-primary-button>
     </div>
