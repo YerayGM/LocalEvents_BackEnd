@@ -36,4 +36,4 @@ Route::group(['as' => 'api.'], function () {
     Orion::belongsToResource('events', 'asistes', EventController::class);
 });
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('csrf');
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
