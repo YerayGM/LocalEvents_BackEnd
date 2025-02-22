@@ -35,9 +35,7 @@ class AuthenticatedSessionController extends Controller
 
         $token = $request->user()->createToken('auth-token')->plainTextToken;
 
-        $csrfToken = $request->session()->token(); // Get the CSRF token
-
-        return response()->json(['token' => $token, 'user' => $request->user(), 'XSRF-Token' => $csrfToken]);
+        return response()->json(['token' => $token, 'user' => $request->user()]);
     }
 
     /**
