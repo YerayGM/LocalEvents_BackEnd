@@ -25,7 +25,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('level')->default(1);
             $table->date('birth_date')->nullable();
             $table->longText('biography')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image')->default('storage/profile-images/predeterminada.jpg');
             $table->string('phone_number')->unique()->nullable();
             $table->timestamps();
             $table->string('github_id')->nullable();
