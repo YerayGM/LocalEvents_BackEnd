@@ -35,7 +35,6 @@ class UserFactory extends Factory
             'level' => fake()->numberBetween(1, 5),
             'birth_date' => fake()->date(),
             'biography' => fake()->text(),
-            'image' => fake()->imageUrl(),
             'phone_number' => fake()->unique()->phoneNumber(),
         ];
     }
