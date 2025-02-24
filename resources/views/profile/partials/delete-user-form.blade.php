@@ -1,8 +1,5 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Eliminar Cuenta') }}
-        </h2>
 
         <p class="mt-1 text-sm text-gray-600">
             {{ __('Una vez que tu cuenta sea eliminada, todos sus recursos y datos se eliminarán permanentemente. Antes de proceder, asegúrate de descargar cualquier información que desees conservar.') }}
