@@ -12,7 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return redirect('https://rafael.informaticamajada.es');
+    return redirect('http://localhost:5173/');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('users', UserController::class);
@@ -42,12 +42,12 @@ Route::get('/auth/callback', function () {
 
     if ($user instanceof User) {
         Auth::login($user);
-        return redirect('https://local-events-front-green.vercel.app/');
+        return redirect('http://localhost:5173/');
     } else {
         return redirect('/login')->with('error', 'No se pudo autenticar el usuario.');
     }
 
-    return redirect('/https://local-events-front-green.vercel.app/');
+    return redirect('http://localhost:5173/');
 });
 
 require __DIR__ . '/auth.php';
