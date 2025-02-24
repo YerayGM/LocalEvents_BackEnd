@@ -23,7 +23,6 @@ class PostFactory extends Factory
     {
         return [
             'text' => fake()->text(),
-            'image' => fake()->word(),
             'association_id' => Association::inRandomOrder()->first()->id,
         ];
     }
