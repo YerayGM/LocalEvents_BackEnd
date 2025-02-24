@@ -23,7 +23,6 @@ class AssociationFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'image' => fake()->word(),
             'email' => fake()->safeEmail(),
             'phone_number' => fake()->phoneNumber(),
             'create_date' => fake()->dateTime(),

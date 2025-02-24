@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
-            $table->string('image');
+            $table->string('image')->default('storage/profile-images/predeterminada.jpg');
             $table->string('description')->nullable();
             $table->enum('state', ["Proximamente","Realizandose","Finalizado"])->default('Proximamente');
             $table->enum('type', ["Evento","Actividad"])->default('Evento');

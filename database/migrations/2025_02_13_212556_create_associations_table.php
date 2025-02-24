@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('associations', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->string('image');
+            $table->string('image')->default('storage/profile-images/predeterminada.jpg');
             $table->string('email', 320)->unique();
             $table->string('phone_number')->unique();
             $table->timestamp('create_date');
@@ -28,6 +28,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+    
     public function down(): void
     {
         Schema::dropIfExists('associations');
