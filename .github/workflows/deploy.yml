@@ -26,5 +26,4 @@ jobs:
             php artisan optimize:clear;
             npm install;
             npm run build;
-            sudo service php8.3-fpm reload;
-          "
+            sudo service php8.3-fpm reload;"
