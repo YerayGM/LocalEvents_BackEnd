@@ -42,12 +42,12 @@ Route::get('/auth/callback', function () {
 
     if ($user instanceof User) {
         Auth::login($user);
-        return redirect('https://local-events-front-green.vercel.app/');
+        return redirect('https://rafael.informaticamajada.es');
     } else {
         return redirect('/login')->with('error', 'No se pudo autenticar el usuario.');
     }
 
-    return redirect('/https://local-events-front-green.vercel.app/');
+    return redirect('https://rafael.informaticamajada.es');
 });
 
 require __DIR__ . '/auth.php';

@@ -19,10 +19,10 @@ class AuthenticatedSessionController extends Controller
         Auth::logout(); // Cierra cualquier sesión activa
         $request->session()->invalidate(); // Invalida la sesión
         $request->session()->regenerateToken(); // Regenera el token CSRF
-    
+
         return view('auth.login');
     }
-    
+
 
     /**
      * Handle an incoming authentication request.
@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
 
         $token = $request->user()->createToken('auth-token')->plainTextToken;
 
-        return response()->json(['token' => $token, 'user' => $request->user()]);
+        return redirect()->route('dashboard')->with('token', $token);
     }
 
     /**
@@ -44,10 +44,10 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         Auth::logout(); // Cierra la sesión
-    
+
         $request->session()->invalidate(); // Invalida la sesión actual
         $request->session()->regenerateToken(); // Regenera el token CSRF
-    
+
         return redirect()->route('login'); // Redirige al login
     }
 }
