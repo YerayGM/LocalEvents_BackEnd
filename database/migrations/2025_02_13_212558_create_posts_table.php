@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->text('text');
-            $table->string('image')->nullable();
+            $table->string('image')->default('storage/profile-images/predeterminada.jpg');
             $table->foreignId('association_id')->index();
             $table->timestamps();
         });

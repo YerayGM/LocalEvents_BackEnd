@@ -14,12 +14,12 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Orion::resource('events', EventController::class);
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 });
 
 // Añadir posibles rutas:
 Route::group(['as' => 'api.'], function () {
+    Orion::resource('events', EventController::class);
     Orion::resource('users', UserController::class);
     Orion::resource('attributes', AttributeController::class);
     Orion::resource('associations', AssociationController::class);
