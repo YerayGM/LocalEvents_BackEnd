@@ -23,7 +23,6 @@ class EventFactory extends Factory
     {
         return [
             'title' => fake()->sentence(4),
-            'image' => fake()->word(),
             'description' => fake()->text(),
             'state' => fake()->randomElement(["Proximamente","Realizandose","Finalizado"]),
             'type' => fake()->randomElement(["Evento","Actividad"]),
