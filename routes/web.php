@@ -15,13 +15,13 @@ Route::get('/dashboard', function () {
     return redirect('https://rafael.informaticamajada.es');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+})->middleware(['auth', 'verified']);
 
 Route::get('/auth/redirect', function () {
     return Socialite::driver('github')->redirect();
