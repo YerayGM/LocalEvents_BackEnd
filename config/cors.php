@@ -4,7 +4,7 @@ return [
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
     'allowed_methods' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     'allowed_origins' => ['https://rafael.informaticamajada.es', 'http://localhost:5173'],
-    'allowed_headers' => ['Content-Type', 'Authorization'],
+    'allowed_headers' => ['Content-Type', 'Authorization', 'X-XSRF-TOKEN'],
     'max_age' => 10,
     'supports_credentials' => true,
 ];
