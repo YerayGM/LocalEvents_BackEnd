@@ -38,6 +38,7 @@ Route::group(['as' => 'api.'], function () {
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+
+Route::get('/user', function (Request $request) {
     return response()->json($request->user());
 });
