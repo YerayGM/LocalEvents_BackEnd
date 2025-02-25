@@ -12,7 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return redirect('http://localhost:5173/');
+    return redirect('https://rafael.informaticamajada.es');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('users', UserController::class);
@@ -42,12 +42,12 @@ Route::get('/auth/callback', function () {
 
     if ($user instanceof User) {
         Auth::login($user);
-        return redirect('http://localhost:5173/');
+        return redirect('https://rafael.informaticamajada.es');
     } else {
         return redirect('/login')->with('error', 'No se pudo autenticar el usuario.');
     }
 
-    return redirect('http://localhost:5173/');
+    return redirect('https://rafael.informaticamajada.es');
 });
 
 require __DIR__ . '/auth.php';
