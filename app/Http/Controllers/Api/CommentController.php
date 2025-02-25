@@ -8,6 +8,5 @@ use Orion\Concerns\DisableAuthorization;
 
 class CommentController extends Controller
 {
-    use DisableAuthorization;
     protected $model = Comment::class;
 }

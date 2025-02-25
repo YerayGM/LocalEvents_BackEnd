@@ -8,6 +8,5 @@ use Orion\Concerns\DisableAuthorization;
 
 class InscribeController extends Controller
 {
-    use DisableAuthorization;
     protected $model = Inscribe::class;
 }
