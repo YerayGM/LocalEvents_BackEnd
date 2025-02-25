@@ -17,7 +17,6 @@
             </div>
 
             <!-- Dropdown de usuario -->
-            <!-- Dropdown de usuario -->
             <div class="hidden sm:flex items-center">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
