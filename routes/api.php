@@ -34,12 +34,10 @@ Route::group(['as' => 'api.'], function () {
     Orion::belongsToResource('comments', 'post', CommentController::class);
     Orion::belongsToResource('events', 'inscribes', EventController::class);
     Orion::belongsToResource('events', 'asistes', EventController::class);
-});
+})->middleware(['auth', 'verified']);
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 Route::middleware(['auth'])->get('/user', function (Request $request) {
     return response()->json($request->user());
 });
-
-
