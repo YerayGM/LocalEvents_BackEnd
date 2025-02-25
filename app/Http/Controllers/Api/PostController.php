@@ -8,7 +8,6 @@ use Orion\Concerns\DisableAuthorization;
 
 class PostController extends Controller
 {
-    use DisableAuthorization;
     protected $model = Post::class;
 
     public function includes(): array
