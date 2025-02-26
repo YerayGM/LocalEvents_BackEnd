@@ -8,5 +8,6 @@ use Orion\Concerns\DisableAuthorization;
 
 class AttributeController extends Controller
 {
+    use DisableAuthorization;
     protected $model = Attribute::class;
 }

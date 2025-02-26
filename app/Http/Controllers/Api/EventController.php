@@ -8,6 +8,8 @@ use Orion\Concerns\DisableAuthorization;
 
 class EventController extends Controller
 {
+    use DisableAuthorization;
+
     protected $model = Event::class;
 
     public function includes(): array
