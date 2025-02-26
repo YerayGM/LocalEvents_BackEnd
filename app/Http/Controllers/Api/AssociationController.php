@@ -8,6 +8,5 @@ use Orion\Concerns\DisableAuthorization;
 
 class AssociationController extends Controller
 {
-
     protected $model = Association::class;
 }
