@@ -8,5 +8,6 @@ use Orion\Concerns\DisableAuthorization;
 
 class AsisteController extends Controller
 {
+    use DisableAuthorization;
     protected $model = Asiste::class;
 }

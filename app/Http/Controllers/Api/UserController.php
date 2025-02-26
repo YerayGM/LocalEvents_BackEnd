@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    use DisableAuthorization;
+
     /**
      * Obtener una lista de todos los usuarios.
      */
