@@ -46,10 +46,6 @@
 
         <div class="flex items-center justify-center mt-4">
 
-            <x-button-link class="ms-4" href="/auth/redirect">
-                {{ __('Use GitHub') }}
-            </x-button-link>
-
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
