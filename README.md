@@ -119,6 +119,15 @@ Este es el backend del proyecto de gestión de eventos, desarrollado con **Larav
 
 Si deseas contribuir, por favor contacta a uno de los integrantes del equipo o realiza un pull request con tus cambios.
 
+
+## Usuarios(Prueba de la App)
+
+user@example.com
+user123
+
+admin@example.com
+admin123
+
 ## Licencia
 
 Este proyecto es de código abierto bajo la licencia **MIT**.
